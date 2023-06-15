@@ -1,0 +1,29 @@
+import java_cup.runtime.*;
+
+terminal BOPM, BOMDP, LBRACK, RBRACK, ID, AOPER, NUM, COPER, LogA, LogO, LogX, ROPER, IDOPER;
+
+non terminal E;
+
+precedence right AOPER;
+precedence left ROPER;
+precedence right COPER;
+precedence left BOPM;
+precedence left BOMDP;
+precedence left LBRACK, RBRACK;
+precedence right LogA, LogO, LogX;
+precedence left IDOPER;
+
+start with E;
+
+E ::= ID AOPER E
+    | E COPER E
+    | E IDOPER E
+    | E ROPER E
+    | E LogA E
+    | E LogO E
+    | LogX E
+    | E BOPM E
+    | E BOMDP E
+    | LBRACK E RBRACK
+    | ID
+    | NUM;
