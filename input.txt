@@ -1,1 +1,1 @@
-id=(id+3*id+(id/id))||((id+id)&&(id-id))
+if(id>id){if(id>id){3+3}else{3*3}}

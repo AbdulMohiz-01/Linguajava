@@ -1,19 +1,30 @@
 import java_cup.runtime.*;
 
-terminal BOPM, BOMDP, LBRACK, RBRACK, ID, AOPER, NUM, COPER, LogA, LogO, LogX, ROPER, IDOPER;
+terminal BOPM, BOMDP, LBRACK, RBRACK, LCBRACK, RCBRACK, ID, AOPER, NUM, COPER, LogA, LogO, LogX, ROPER, IDOPER, IF, ELSE;
 
-non terminal E;
+non terminal E, S, IF_STATEMENT, ELSE_STATEMENT, CONDITION;
 
 precedence right AOPER;
 precedence left ROPER;
 precedence right COPER;
 precedence left BOPM;
 precedence left BOMDP;
-precedence left LBRACK, RBRACK;
+precedence left LBRACK, RBRACK, LCBRACK, RCBRACK;
 precedence right LogA, LogO, LogX;
 precedence left IDOPER;
 
-start with E;
+start with S;
+
+S ::= IF_STATEMENT
+    | E;
+
+IF_STATEMENT ::= IF CONDITION LCBRACK S RCBRACK ELSE_STATEMENT
+              | IF CONDITION LCBRACK S RCBRACK;
+
+ELSE_STATEMENT ::= ELSE LCBRACK S RCBRACK
+                 | ELSE IF_STATEMENT;
+
+CONDITION ::= LBRACK E ROPER E RBRACK;
 
 E ::= ID AOPER E
     | E COPER E
