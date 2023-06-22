@@ -17,11 +17,15 @@ LOA =(\&\&)
 LOO =(\|\|)
 LOX =(\!)
 relational_operators = (\=\=|\!\=|\<|\>|\<\=|\>\=)
+
 if = (if)
 else = (else)
+for = (for)
+while = (while)
+
 
 // keywords = (abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|try|void|volatile|while|true|false|null)
-// terminator = (;)
+terminator = (\;)
 // colon = (:)
 // comma = (,)
 // dot = (\.)
@@ -42,6 +46,10 @@ right_brace = \}
 // keywords { return new Symbol(sym.KW); }
 {if} { return new Symbol(sym.IF); }
 {else} { return new Symbol(sym.ELSE);}
+{for} { return new Symbol(sym.FOR); }
+{while} { return new Symbol(sym.WHILE); }
+"true" { return new Symbol(sym.TRUE); }
+"false" { return new Symbol(sym.FALSE); }
 {identifiers} { return new Symbol(sym.ID); }
 {BOMDP} { return new Symbol(sym.BOMDP); }
 {BOPM} { return new Symbol(sym.BOPM); }
@@ -55,20 +63,32 @@ right_brace = \}
 // {string_literals} { return new Symbol(sym.SLIT); }*/
 {numbers} { return new Symbol(sym.NUM); }
 /*comments { return new Symbol(sym.COMM); }
-single_line_comments { return new Symbol(sym.SLCOMM); }
-whitespace { return new Symbol(sym.WSPACE); } */
+{whitespace} { return new Symbol(sym.WSPACE); } 
+single_line_comments { return new Symbol(sym.SLCOMM); }*/
 {left_parenthesis} { return new Symbol(sym.LBRACK); }
 {right_parenthesis} { return new Symbol(sym.RBRACK); }
 {left_brace} { return new Symbol(sym.LCBRACK); }
 {right_brace} { return new Symbol(sym.RCBRACK); }
+{terminator} { return new Symbol(sym.TER); }
 /*left_bracket { return new Symbol(sym.LSBRACK); }
 right_bracket { return new Symbol(sym.RSBRACK); }
-terminator { return new Symbol(sym.TER); }
 colon { return new Symbol(sym.COL); }
 comma { return new Symbol(sym.COMMA); }
 dot { return new Symbol(sym.DOT); }
 hash { return new Symbol(sym.HASH); } */
 . { System.out.println("Error:" + yytext()); }
+
+
+
+
+
+/**
+COMMANDS TO RUN THE LEXER
+jflex scanner.jflex
+java java_cup.MainDrawTree parser.cup
+javac *.java
+java Main input.txt
+*/
 
 
 
