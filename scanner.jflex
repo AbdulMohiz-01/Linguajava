@@ -22,18 +22,22 @@ if = (if)
 else = (else)
 for = (for)
 while = (while)
+do = (do)
+datatypes = (int|float|double|char|boolean|String)
+// function =(function)
+// string_literals = \"([^\\\n]|(\\.))*?\"
+// println = (println)
+// comma = (,)
 
 
 // keywords = (abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|try|void|volatile|while|true|false|null)
 terminator = (\;)
 // colon = (:)
-// comma = (,)
 // dot = (\.)
 // hash = (\#)
 
-// string_literals = \"([^\\\n]|(\\.))*?\"
-// comments = \/\*(.|\n)*?\*\/
 // single_line_comments = \/\/.*\n
+// comments = \/\*(.|\n)*?\*\/
 // whitespace = [ \t\r\n]+
 left_brace = \{
 right_brace = \}
@@ -48,8 +52,12 @@ right_brace = \}
 {else} { return new Symbol(sym.ELSE);}
 {for} { return new Symbol(sym.FOR); }
 {while} { return new Symbol(sym.WHILE); }
+{do} { return new Symbol(sym.DO); }
+// {function} { return new Symbol(sym.FUNCTION); }
 "true" { return new Symbol(sym.TRUE); }
 "false" { return new Symbol(sym.FALSE); }
+// {string_literals} { return new Symbol(sym.SLIT); }
+{datatypes} { return new Symbol(sym.DATATYPE); }
 {identifiers} { return new Symbol(sym.ID); }
 {BOMDP} { return new Symbol(sym.BOMDP); }
 {BOPM} { return new Symbol(sym.BOPM); }
@@ -70,10 +78,10 @@ single_line_comments { return new Symbol(sym.SLCOMM); }*/
 {left_brace} { return new Symbol(sym.LCBRACK); }
 {right_brace} { return new Symbol(sym.RCBRACK); }
 {terminator} { return new Symbol(sym.TER); }
+"," { return new Symbol(sym.COMMA); }
 /*left_bracket { return new Symbol(sym.LSBRACK); }
 right_bracket { return new Symbol(sym.RSBRACK); }
 colon { return new Symbol(sym.COL); }
-comma { return new Symbol(sym.COMMA); }
 dot { return new Symbol(sym.DOT); }
 hash { return new Symbol(sym.HASH); } */
 . { System.out.println("Error:" + yytext()); }
