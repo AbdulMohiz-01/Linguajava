@@ -1,0 +1,14 @@
+class Maths{
+    int Main(String args){
+        int a=10;
+        int b=20;
+        printsum(a,b);
+
+    }
+
+    int printsum(int a,int b){
+        int sum = a+b;
+        println(sum);
+    }
+
+}
