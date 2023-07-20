@@ -33,7 +33,7 @@ return = (return)
 class = (class)
 break = (break)
 // function =(function)
-// string_literals = \"([^\\\n]|(\\.))*?\"
+string_literals = \"([^\\\n]|(\\.))*?\"
 // println = (println)
 // comma = (,)
 
@@ -69,7 +69,7 @@ right_bracket = \]
 // {function} { return new Symbol(sym.FUNCTION); }
 "true" { return new Symbol(sym.TRUE); }
 "false" { return new Symbol(sym.FALSE); }
-// {string_literals} { return new Symbol(sym.SLIT); }
+{string_literals} { return new Symbol(sym.SLIT); }
 {datatypes} { return new Symbol(sym.DATATYPE); }
 {return} { return new Symbol(sym.RETURN); }
 

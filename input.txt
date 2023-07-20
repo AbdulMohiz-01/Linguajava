@@ -1,14 +1,53 @@
 class Maths{
     int Main(String args){
-        int a=10;
-        int b=20;
-        printsum(a,b);
+        int a=0;
+        // hello world
+        switch(a){
+            case 1:
+                print(a);
+                print(a);
+                print(a);
+                break;
+            case 2:
+                print(a);
+                print(a);
+                break;
+            case 3:
+                print(a);
+                print(a);
+                break;
+            default:
+                print(a);
+                print(a);
+                print(a);
+                break;
+        }
+
+        int arr1[] = new int[10];
+        int arr2[] = {1,2,3,4,5};
+        String message = "Sum has been calculated!";
+
+        int num1 = 2;
+        int num2 = 3;
+        int sum = 0;
+        sum(num1, num2, sum, message);
+        randomswitch(a);
+
+
 
     }
 
-    int printsum(int a,int b){
-        int sum = a+b;
-        println(sum);
+    int sum(int num1, int num2, int sum, String message){
+        sum = num1 + num2;
+        println(message);
     }
 
+    int findGreater(int num1, int num2){
+        if(num1 > num2){
+            println(num1);
+        }
+        else{
+            println(num2);
+        }
+    }
 }
